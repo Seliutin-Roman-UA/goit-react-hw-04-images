@@ -15,7 +15,7 @@ export class VideoGalleryItem extends Component {
   };
 
   render() {
-    const { small, tags, large } = this.props.data;
+    const { small, large } = this.props.data;
 
     return (
       <>
@@ -41,3 +41,8 @@ export class VideoGalleryItem extends Component {
     );
   }
 }
+VideoGalleryItem.propTypes = {
+  small: PropTypes.string.isRequired,
+  tags: PropTypes.string,
+  large: PropTypes.string.isRequired,
+};

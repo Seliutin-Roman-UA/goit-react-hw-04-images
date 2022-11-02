@@ -1,4 +1,3 @@
-import { TbDatabaseOff } from 'react-icons/tb';
 
 export function fetchData(
   { searchString, media, category },
