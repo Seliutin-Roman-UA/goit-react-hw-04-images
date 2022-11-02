@@ -11,7 +11,7 @@ export class Modal extends Component {
     document.removeEventListener('keydown', this.onPressKey);
   }
   onPressKey = e => {
-    this.props.onPress();
+    if (e.code === 'Escape') this.props.onPress();
   };
 
   render() {
