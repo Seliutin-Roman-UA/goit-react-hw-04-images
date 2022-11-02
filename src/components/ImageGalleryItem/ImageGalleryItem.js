@@ -8,10 +8,13 @@ export class ImageGalleryItem extends Component {
   state = {
     showModal: false,
   };
-  setShowModal = e => {
+  
+  setShowModalbyClick = e => {
     if (e.currentTarget !== e.target) return;
     this.setState({ showModal: !this.state.showModal });
   };
+
+  setShowModalbyKey = () => this.setState({ showModal: !this.state.showModal });
 
   render() {
     const { small, tags, large } = this.props.data;
@@ -20,7 +23,7 @@ export class ImageGalleryItem extends Component {
       <>
         <li className={css.ImageGalleryItem}>
           <img
-            onClick={this.setShowModal}
+            onClick={this.setShowModalbyClick}
             src={small}
             alt={tags}
             className={css.ImageGalleryItem_image}
@@ -28,7 +31,10 @@ export class ImageGalleryItem extends Component {
         </li>
 
         {this.state.showModal && (
-          <Modal callback={this.setShowModal}>
+          <Modal
+            onClick={this.setShowModalbyClick}
+            onPress={this.setShowModalbyKey}
+          >
             <img
               src={large}
               alt={tags}
@@ -47,9 +53,10 @@ export class ImageGalleryItem extends Component {
   }
 }
 
-
 ImageGalleryItem.propTypes = {
-  small: PropTypes.string.isRequired,
-  tags: PropTypes.string,
-  large: PropTypes.string.isRequired,
+  data: PropTypes.shape({
+    small: PropTypes.string.isRequired,
+    large: PropTypes.string.isRequired,
+    tags: PropTypes.string,
+  }).isRequired,
 };

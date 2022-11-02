@@ -8,11 +8,13 @@ export class VideoGalleryItem extends Component {
   state = {
     showModal: false,
   };
-  setShowModal = e => {
-    e.preventDefault();
+
+  setShowModalbyClick = e => {
     if (e.currentTarget !== e.target) return;
     this.setState({ showModal: !this.state.showModal });
   };
+
+  setShowModalbyKey = () => this.setState({ showModal: !this.state.showModal });
 
   render() {
     const { small, large } = this.props.data;
@@ -28,7 +30,10 @@ export class VideoGalleryItem extends Component {
         </li>
 
         {this.state.showModal && (
-          <Modal callback={this.setShowModal}>
+          <Modal
+            onClick={this.setShowModalbyClick}
+            onPress={this.setShowModalbyKey}
+          >
             <video
               src={large}
               autoPlay
@@ -42,7 +47,9 @@ export class VideoGalleryItem extends Component {
   }
 }
 VideoGalleryItem.propTypes = {
-  small: PropTypes.string.isRequired,
-  tags: PropTypes.string,
-  large: PropTypes.string.isRequired,
+  data: PropTypes.shape({
+    small: PropTypes.string.isRequired,
+    large: PropTypes.string.isRequired,
+    tags: PropTypes.string,
+  }).isRequired,
 };
