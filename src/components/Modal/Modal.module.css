@@ -1,0 +1,20 @@
+.backdrope {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 2;
+  background-color: rgba(57, 57, 163, 0.6);}
+ 
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(0.6 * 100vw);
+  height: auto;
+  display: flex;
+  justify-content: center;
+  
+}

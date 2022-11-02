@@ -1,0 +1,55 @@
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  margin: 0;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+  cursor: pointer;
+}
+.img {
+  display: block;
+  width: 18px;
+  height: 18px;
+  transition: transform 250ms;
+}
+.button:hover .img {
+  transform: scale(0.9);
+}
+.input {
+  font-size: 24px;
+  border: none;
+  line-height: 32px;
+  padding: 0 10px;
+  border-radius: 10px;
+}
+.input:focus {
+  outline: none;
+}
+
+.searchbar {
+  position: sticky;
+   top: 0;
+  left: 0;
+  display:flex;
+  justify-content: space-around;
+  align-items: center;
+   background-color: rgb(57, 57, 163);
+  padding-top: 5px;
+  padding-bottom: 5px;
+  width: 100vw;
+  z-index: 1;
+}
+.form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+.label {display: inline-flex;
+  justify-content: center;
+  align-items: center;}
