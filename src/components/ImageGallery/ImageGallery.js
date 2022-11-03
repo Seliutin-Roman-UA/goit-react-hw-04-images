@@ -39,7 +39,6 @@ export class ImageGallery extends Component {
       media_ !== media ||
       category_ !== category
     ) {
-      console.log('++++++NUL++++++');
       return {
         arrayImg: [],
         maxPage: 1,
@@ -74,7 +73,6 @@ export class ImageGallery extends Component {
 
     fetchData(this.props.searchSrting, imgPerPage, this.state.currentPage)
       .then(data => {
-        console.log(data);
         if (data.arrayImg.length === 0) {
           toast.warn('Sorry we could not find any media on your request');
           return;

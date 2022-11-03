@@ -9,6 +9,8 @@ export class VideoGalleryItem extends Component {
     showModal: false,
   };
 
+ 
+
   setShowModalbyClick = e => {
     if (e.currentTarget !== e.target) return;
     this.setState({ showModal: !this.state.showModal });
@@ -23,7 +25,7 @@ export class VideoGalleryItem extends Component {
       <>
         <li className={css.ImageGalleryItem}>
           <video
-            onClick={this.setShowModal}
+            onClick={this.setShowModalbyClick}
             src={small}
             className={css.ImageGalleryItem_image}
           ></video>

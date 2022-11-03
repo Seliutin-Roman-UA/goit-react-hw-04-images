@@ -13,7 +13,7 @@ export class App extends Component {
 
   setStateProperty = newProperty => {
    
-    this.setState({ ...newProperty }, () => console.log('new===', this.state));
+    this.setState({ ...newProperty });
   };
 
   render() {

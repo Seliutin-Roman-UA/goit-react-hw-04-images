@@ -1,4 +1,3 @@
-
 export function fetchData(
   { searchString, media, category },
   imgPerPage,
@@ -14,9 +13,6 @@ export function fetchData(
   const type = media === 'photo' ? '&image_type=photo' : '';
   imgPerPage = `&per_page=${imgPerPage}`;
   currentPage = `&page=${currentPage}`;
-  console.log(
-    baseURL + API_KEY + byCategory + bySearchString + imgPerPage + currentPage
-  );
 
   return fetch(
     baseURL +
@@ -42,7 +38,6 @@ export function fetchData(
           ),
         };
       if (media === 'video') {
-        console.log('video', data.hits[0].videos.tiny.url);
         return {
           totalHits: data.totalHits,
           arrayImg: data.hits.map(({ id, videos, tags }) => ({
