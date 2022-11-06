@@ -1,56 +1,48 @@
 import { Modal } from 'components/Modal/Modal';
-import { Component } from 'react';
+import { useState } from 'react';
 import css from './ImageGalleryItem.module.css';
 
 import PropTypes from 'prop-types';
 
-export class ImageGalleryItem extends Component {
-  state = {
-    showModal: false,
-  };
-  
-  setShowModalbyClick = e => {
+export function ImageGalleryItem({ data: { small, large, tags } }) {
+
+  const [showModal, setshowModal] = useState(false);
+
+  const setShowModalbyClick = e => {
     if (e.currentTarget !== e.target) return;
-    this.setState({ showModal: !this.state.showModal });
+    setshowModal(!showModal);
   };
 
-  setShowModalbyKey = () => this.setState({ showModal: !this.state.showModal });
+  const setShowModalbyKey = () => setshowModal(!showModal);
 
-  render() {
-    const { small, tags, large } = this.props.data;
+  return (
+    <>
+      <li className={css.ImageGalleryItem}>
+        <img
+          onClick={setShowModalbyClick}
+          src={small}
+          alt={tags}
+          className={css.ImageGalleryItem_image}
+        />
+      </li>
 
-    return (
-      <>
-        <li className={css.ImageGalleryItem}>
+      {showModal && (
+        <Modal onClick={setShowModalbyClick} onPress={setShowModalbyKey}>
           <img
-            onClick={this.setShowModalbyClick}
-            src={small}
+            src={large}
             alt={tags}
-            className={css.ImageGalleryItem_image}
+            style={{
+              display: 'blocks',
+              objectFit: 'cover',
+              objectPosition: 'center',
+              width: '100%',
+              height: 'auto',
+            }}
           />
-        </li>
-
-        {this.state.showModal && (
-          <Modal
-            onClick={this.setShowModalbyClick}
-            onPress={this.setShowModalbyKey}
-          >
-            <img
-              src={large}
-              alt={tags}
-              style={{
-                display: 'blocks',
-                objectFit: 'cover',
-                objectPosition: 'center',
-                width: '100%',
-                height: 'auto',
-              }}
-            />
-          </Modal>
-        )}
-      </>
-    );
-  }
+        </Modal>
+      )}
+    </>
+  );
 }
 
 ImageGalleryItem.propTypes = {

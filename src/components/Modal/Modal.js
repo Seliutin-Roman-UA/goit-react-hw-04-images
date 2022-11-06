@@ -1,30 +1,29 @@
-import { Component } from 'react';
+import { useEffect } from 'react';
 import css from './Modal.module.css';
 
 import PropTypes from 'prop-types';
 
-export class Modal extends Component {
-  componentDidMount() {
-    document.addEventListener('keydown', this.onPressKey);
-  }
-  componentWillUnmount() {
-    document.removeEventListener('keydown', this.onPressKey);
-  }
-  onPressKey = e => {
-    if (e.code === 'Escape') this.props.onPress();
-  };
+export function Modal({ children, onPress, onClick }) {
+ 
+  useEffect(() => {
+    const onPressKey = e => {
+      if (e.code === 'Escape') onPress();
+    };
+    window.addEventListener('keydown', onPressKey);
 
-  render() {
-    const { children, onClick } = this.props;
-    return (
-      <div className={css.backdrope} onClick={onClick}>
-        <div className={css.modal}>{children}</div>
-      </div>
-    );
-  }
+    return () => window.removeEventListener('keydown', onPressKey);
+  }, [onPress]);
+
+  return (
+    <div className={css.backdrope} onClick={onClick}>
+      <div className={css.modal}>{children}</div>
+    </div>
+  );
 }
 
 Modal.propTypes = {
   children: PropTypes.element,
   callback: PropTypes.func,
 };
+
+

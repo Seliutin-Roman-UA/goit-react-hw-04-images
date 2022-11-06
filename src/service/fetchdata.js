@@ -1,7 +1,9 @@
 export function fetchData(
-  { searchString, media, category },
-  imgPerPage,
-  currentPage
+  searchString,
+  media,
+  category,
+  currentPage,
+  imgPerPage
 ) {
   const baseURL =
     media === 'photo'
